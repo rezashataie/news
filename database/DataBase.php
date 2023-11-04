@@ -85,7 +85,7 @@ class DataBase
 
     public function delete($tableName, $id)
     {
-        $sql = "DELETE FROM " . $tableName . "WHERE id = ? ;";
+        $sql = "DELETE FROM " . $tableName . " WHERE id = ? ;";
         try {
             $stmt = $this->connection->prepare($sql);
             $stmt->execute([$id]);
