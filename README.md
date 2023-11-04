@@ -1,2 +1,2 @@
 # news
-a news website with php
+a news website create with php
