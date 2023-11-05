@@ -10,7 +10,7 @@ class Post extends Admin
     public function index()
     {
         $db = new DataBase();
-        $posts = $db->select('SELECT * FROM posts ORDER BY `id` DESC');
+        $posts = $db->select('SELECT posts.*, users.username AS user, categories.name AS category FROM ((posts INNER JOIN users ON posts.user_id = users.id) INNER JOIN categories ON posts.cat_id = categories.id) ORDER BY posts.id DESC');
         require_once(BASE_PATH . '/template/admin/posts/index.php');
     }
 

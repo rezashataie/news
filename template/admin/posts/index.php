@@ -23,43 +23,44 @@
             </tr>
         </thead>
         <tbody>
-
-            <tr>
-                <td>
-                    <a class=" text-primary" href="">
-                        ss
-                    </a>
-                </td>
-                <td>
-                    ss
-                <td>
-                    ss </td>
-                <td>
-                    ss
-                </td>
-                <td>
-                    <span class=" badge badge-success">#breaking_news</span>
-                    <span class=" badge badge-dark">#editor_selected</span>
-                </td>
-                <td>
-                    ss
-                </td>
-                <td>
-                    ss
-                </td>
-                <td><img style=" width: 80px;" src="" alt=""></td>
-                <td style=" width: 25rem;">
-                    <a role=" button" class=" btn btn-sm btn-warning btn-dark text-white" href="">
-                        remove breaking news add breaking news
-                    </a>
-                    <a role=" button" class=" btn btn-sm btn-warning btn-dark text-white" href="">
-                        remove selcted add selected
-                    </a>
-                    <hr class=" my-1" />
-                    <a role=" button" class=" btn btn-sm btn-primary text-white" href="">edit</a>
-                    <a role=" button" class=" btn btn-sm btn-danger text-white" href="">delete</a>
-                </td>
-            </tr>
+            <?php foreach ($posts as $post) { ?>
+                <tr>
+                    <td>
+                        <?= $post['id'] ?>
+                    </td>
+                    <td>
+                        <?= $post['title'] ?>
+                    </td>
+                    <td>
+                        <?= $post['summary'] ?>
+                    </td>
+                    <td>
+                        <?= $post['view'] ?>
+                    </td>
+                    <td>
+                        <?= $post['breaking_news'] == 1 ? '<span class=" badge badge-success">breaking_news</span>' : '' ?>
+                        <?= $post['selected'] == 1 ? '<span class=" badge badge-dark">editor_selected</span>' : '' ?>
+                    </td>
+                    <td>
+                        <?= $post['user'] ?>
+                    </td>
+                    <td>
+                        <?= $post['category'] ?>
+                    </td>
+                    <td><img style=" width: 80px;" src="" alt=""></td>
+                    <td style=" width: 25rem;">
+                        <a role=" button" class=" btn btn-sm btn-warning btn-dark text-white" href="">
+                            <?= $post['breaking_news'] == 1 ? 'remove breaking news' : 'add breaking news' ?>
+                        </a>
+                        <a role=" button" class=" btn btn-sm btn-warning btn-dark text-white" href="">
+                            <?= $post['selected'] == 1 ? 'remove selcted' : 'add selected' ?>
+                        </a>
+                        <hr class=" my-1" />
+                        <a role=" button" class=" btn btn-sm btn-primary text-white" href="">edit</a>
+                        <a role=" button" class=" btn btn-sm btn-danger text-white" href="">delete</a>
+                    </td>
+                </tr>
+            <?php } ?>
         </tbody>
 
     </table>
