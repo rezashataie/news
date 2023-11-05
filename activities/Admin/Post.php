@@ -16,6 +16,8 @@ class Post extends Admin
 
     public function create()
     {
+        $db = new DataBase();
+        $categories = $db->select('SELECT * FROM categories ORDER BY `id` DESC');
         require_once(BASE_PATH . '/template/admin/posts/create.php');
     }
 
