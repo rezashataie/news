@@ -28,10 +28,10 @@ class Admin
     protected function saveImage($image, $imagePath, $imageName = null)
     {
         if ($imageName) {
-            $extention = explode('/', $image['type'][1]);
+            $extention = explode('/', $image['type'])[1];
             $imageName = $imageName . '.' . $extention;
         } else {
-            $extention = explode('/', $image['type'][1]);
+            $extention = explode('/', $image['type'])[1];
             $imageName = date('Y-m-d-H-i-s') . '.' . $extention;
         }
 

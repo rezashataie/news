@@ -47,7 +47,7 @@
                     <td>
                         <?= $post['category'] ?>
                     </td>
-                    <td><img style="width: 80px;" src="" alt=""></td>
+                    <td><img style="width: 80px;" src="<?= asset($post['image']) ?>" alt=""></td>
                     <td style="width: 25rem;">
                         <a role="button" class="btn btn-sm btn-warning btn-dark text-white" href="">
                             <?= $post['breaking_news'] == 1 ? 'remove breaking news' : 'add breaking news' ?>

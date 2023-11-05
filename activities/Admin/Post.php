@@ -21,12 +21,26 @@ class Post extends Admin
         require_once(BASE_PATH . '/template/admin/posts/create.php');
     }
 
-    // public function store($request)
-    // {
-    //     $db = new DataBase();
-    //     $db->insert('posts', array_keys($request), $request);
-    //     $this->redirect('admin/post');
-    // }
+    public function store($request)
+    {
+        $realTimestamp = substr($request['published_at'], 0, 10);
+        $request['published_at'] = date('Y-m-d H:i:s', (int) $realTimestamp);
+        $db = new DataBase();
+        if ($request['cat_id'] != null) {
+            $request['image'] = $this->saveImage($request['image'], 'post-image');
+            if ($request['image']) {
+                $request = array_merge($request, ['user_id' => 1]);
+                $db->insert('posts', array_keys($request), $request);
+                $this->redirect('admin/post');
+            } else {
+                dd('hi-1');
+                $this->redirect('admin/post');
+            }
+        } else {
+            dd('hi-2');
+            $this->redirect('admin/post');
+        }
+    }
 
     // public function edit($id)
     // {
