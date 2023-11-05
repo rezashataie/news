@@ -40,7 +40,7 @@
                 <a class="text-decoration-none d-block py-1 px-2 mt-1" href="<?= url('admin/category') ?>">
                     <i class="fas fa-clipboard-list"></i>Category
                 </a>
-                <a class="text-decoration-none d-block py-1 px-2 mt-1" href="">
+                <a class="text-decoration-none d-block py-1 px-2 mt-1" href="<?= url('admin/post') ?>">
                     <i class="fas fa-newspaper"></i> Post
                 </a>
                 <a class="text-decoration-none d-block py-1 px-2 mt-1" href="">

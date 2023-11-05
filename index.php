@@ -15,6 +15,7 @@ define('DB_PASSWORD', '');
 require_once 'database/DataBase.php';
 require_once 'activities/Admin/Admin.php';
 require_once 'activities/Admin/Category.php';
+require_once 'activities/Admin/Post.php';
 
 function uri($reservedUrl, $class, $method, $requestMethod = 'GET')
 {
