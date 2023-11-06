@@ -42,24 +42,56 @@ class Post extends Admin
         }
     }
 
-    // public function edit($id)
-    // {
-    //     $db = new DataBase();
-    //     $post = $db->select('SELECT * FROM posts WHERE id = ?;', [$id])->fetch();
-    //     require_once(BASE_PATH . '/template/admin/posts/edit.php');
-    // }
+    public function edit($id)
+    {
+        $db = new DataBase();
+        $post = $db->select('SELECT * FROM posts WHERE id = ?;', [$id])->fetch();
+        require_once(BASE_PATH . '/template/admin/posts/edit.php');
+    }
 
-    // public function update($request, $id)
-    // {
-    //     $db = new DataBase();
-    //     $db->update('posts', $id, array_keys($request), $request);
-    //     $this->redirect('admin/post');
-    // }
+    public function update($request, $id)
+    {
+        $db = new DataBase();
+        $db->update('posts', $id, array_keys($request), $request);
+        $this->redirect('admin/post');
+    }
 
-    // public function delete($id)
-    // {
-    //     $db = new DataBase();
-    //     $db->delete('posts', $id);
-    //     $this->redirect('admin/post');
-    // }
+    public function delete($id)
+    {
+        $db = new DataBase();
+        $post = $db->select('SELECT * FROM posts WHERE id = ?;', [$id])->fetch();
+        $this->removeImage($post['image']);
+        $db->delete('posts', $id);
+        $this->redirectBack();
+    }
+
+    public function selected($id)
+    {
+        $db = new DataBase();
+        $post = $db->select('SELECT * FROM posts WHERE id = ?;', [$id])->fetch();
+        if (empty($post)) {
+            $this->redirectBack();
+        }
+        if ($post['selected'] == 0) {
+            $db->update('posts', $id, ['selected'], [1]);
+        } else {
+            $db->update('posts', $id, ['selected'], [0]);
+        }
+        $this->redirectBack();
+    }
+
+    public function breakingNews($id)
+    {
+        $db = new DataBase();
+        $post = $db->select('SELECT * FROM posts WHERE id = ?;', [$id])->fetch();
+        if (empty($post)) {
+            $this->redirectBack();
+        }
+        if ($post['breaking_news'] == 0) {
+            $db->update('posts', $id, ['breaking_news'], [1]);
+        } else {
+            $db->update('posts', $id, ['breaking_news'], [0]);
+        }
+        $this->redirectBack();
+    }
 }
